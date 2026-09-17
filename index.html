@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Ontdek ze allemaal</title>
+  </head>
+  <body>
+    <main>
+      <section class="background">
+        <img src="bg-pattern-tile.jpg" alt="" class="bg" />
+      </section>
+      <button class="card" id="card" type="button" aria-label="Draai de kaart om">
+        <img class="card-back" src="backside.png" alt="Kaart achterkant" />
+        <img class="card-front" id="animal" src="massive/cat_adult.png" alt="Dier" />
+      </button>
+    </main>
+
+    <script>
+      const animals = [
+        "cat_adult.png", "cat_baby.png", "cow_adult.png", "cow_baby.png",
+        "dog_adult.png", "dog_baby.png", "duck_adult.png", "duck_baby.png",
+        "elephant_adult.png", "elephant_baby.png", "goat_adult.png", "goat_baby.png",
+        "horse_adult.png", "horse_baby.png", "pig_adult.png", "pig_baby.png",
+        "seal_adult.png", "seal_baby.png"
+      ];
+
+      const card = document.querySelector("#card");
+      const animal = document.querySelector("#animal");
+      let currentAnimal = 0;
+
+      card.addEventListener("click", () => {
+        card.classList.add("flipped");
+
+        setTimeout(() => {
+          currentAnimal += 1;
+          if (currentAnimal === animals.length) currentAnimal = 0;
+          animal.src = `massive/${animals[currentAnimal]}`;
+          card.classList.remove("flipped");
+        }, 700);
+      });
+    </script>
+  </body>
+</html>
